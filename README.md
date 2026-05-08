@@ -37,7 +37,7 @@ O sistema processa comandos via terminal para realizar as seguintes operações:
 2. **Compilar o Código**:]
    ```bash
    cd\
-   cd C:\Users\Public\Downloads\Astronautas
+   cd \Users\Public\Downloads\Astronautas
    g++ -o astronautas.exe main.cpp
 3. **Executar**:]
    ```bash
