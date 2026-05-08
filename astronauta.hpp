@@ -1,7 +1,6 @@
 #ifndef ASTRONAUTA_HPP
 #define ASTRONAUTA_HPP
 
-#include <iostream>
 #include <string>
 #include <vector>
 
@@ -16,10 +15,10 @@ public:
     bool disponivel;
     vector<int> voosParticipados;
 
-    Astronauta(string _cpf, int _idade, string _nome) {
-        cpf = _cpf;
-        idade = _idade;
-        nome = _nome;
+    Astronauta(string c, int i, string n) {
+        cpf = c;
+        idade = i;
+        nome = n;
         vivo = true;       
         disponivel = true; 
     }
