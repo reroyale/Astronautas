@@ -31,6 +31,24 @@ O sistema processa comandos via terminal para realizar as seguintes operações:
 
 ## Como Executar
 
-1. **Clonar o repositório**:
+1. **Clonar o Repositório**:
    ```bash
    git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+
+2. **Compilar o Código**:]
+   ```bash
+   g++ -o sistema_espacial main.cpp
+
+3. **Executar**:]
+   ```bash
+   ./sistema_espacial
+
+## Exemplo de Comandos
+
+- CADASTRAR_ASTRONAUTA 12345678900 35 Neil Armstrong
+- CADASTRAR_VOO 101
+- ADICIONAR_ASTRONAUTA 12345678900 101
+- LANCAR_VOO 101
+- FINALIZAR_VOO 101
+- LISTAR_VOOS
+- FIM
