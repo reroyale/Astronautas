@@ -34,14 +34,11 @@ O sistema processa comandos via terminal para realizar as seguintes operações:
 1. **Clonar o Repositório**:
    ```bash
    git clone https://github.com/reroyale/Astronautas.git C:\Users\Public\Downloads\Astronautas
-
-
 2. **Compilar o Código**:]
    ```bash
    cd\
    cd C:\Users\Public\Downloads\Astronautas
    g++ -o astronautas.exe main.cpp
-
 3. **Executar**:]
    ```bash
    ./astronautas.exe
