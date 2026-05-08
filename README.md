@@ -33,15 +33,15 @@ O sistema processa comandos via terminal para realizar as seguintes operações:
 
 1. **Clonar o Repositório**:
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+   git clone [https://github.com/reroyale/Astronautas.git](https://github.com/reroyale/Astronautas.git)
 
 2. **Compilar o Código**:]
    ```bash
-   g++ -o sistema_espacial main.cpp
+   g++ -o Astronautas main.cpp
 
 3. **Executar**:]
    ```bash
-   ./sistema_espacial
+   ./Astronautas
 
 ## Exemplo de Comandos
 
