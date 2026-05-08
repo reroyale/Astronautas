@@ -16,6 +16,13 @@ public:
         codigo = c;
         estado = 0; 
     }
+    
+    string getStatus() {
+        if (estado == 0) return "PLANEJADO";
+        if (estado == 1) return "EM CURSO";
+        if (estado == 2) return "SUCESSO";
+        return "EXPLODIDO";
+    }
 };
 
 #endif
