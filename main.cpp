@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include <limits>
 #include "astronauta.hpp"
 #include "voo.hpp"
 
@@ -20,6 +21,7 @@ void exibirHelp() {
     cout << "boom [codigo]            - Finalizar voo com explosao" << endl;
     cout << "lv                       - Listar todos os voos" << endl;
     cout << "lm                       - Listar astronautas mortos" << endl;
+    cout << "crew                     - Listar astronautas cadastrados" << endl;
     cout << "!help                    - Mostrar este menu" << endl;
     cout << "sair                     - Encerrar o sistema" << endl;
     cout << "======================================================" << endl;
@@ -29,7 +31,7 @@ int main() {
     string comando;
     
     cout << "******************************************************" << endl;
-    cout << "* SISTEMA DE CONTROLE AEROESPACIAL          *" << endl;
+    cout << "*          SISTEMA DE CONTROLE AEROESPACIAL          *" << endl;
     cout << "******************************************************" << endl;
     cout << "Digite !help para ver os comandos ou 'sair' para finalizar." << endl;
 
@@ -96,7 +98,7 @@ int main() {
                 if (voos[i].codigo == cod) {
                     if (voos[i].estado == 0 && !voos[i].passageirosCpf.empty()) {
                         voos[i].estado = 1;
-                        cout << "[LANÇAMENTO] O voo " << cod << " partiu com sucesso!" << endl;
+                        cout << "[LANCAMENTO] O voo " << cod << " partiu com sucesso!" << endl;
                         for (int j = 0; j < (int)voos[i].passageirosCpf.size(); j++) {
                             for (int k = 0; k < (int)astronautas.size(); k++) {
                                 if (astronautas[k].cpf == voos[i].passageirosCpf[j]) {
@@ -125,15 +127,67 @@ int main() {
             }
         }
 
+        else if (comando == "boom") { // FINALIZAR_VOO_COM_EXPLOSAO
+            int cod; cin >> cod;
+            for (int i = 0; i < (int)voos.size(); i++) {
+                if (voos[i].codigo == cod && voos[i].estado == 1) {
+                    voos[i].estado = 3;
+                    cout << "[EXPLOSAO] O voo " << cod << " explodiu! Tripulacao perdida." << endl;
+                    for (int j = 0; j < (int)voos[i].passageirosCpf.size(); j++) {
+                        for (int k = 0; k < (int)astronautas.size(); k++) {
+                            if (astronautas[k].cpf == voos[i].passageirosCpf[j]) {
+                                astronautas[k].vivo = false;
+                                astronautas[k].disponivel = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         else if (comando == "lv") { // LISTAR_VOOS
             cout << "\n--- LISTAGEM DE VOOS ---" << endl;
-            for (int i = 0; i < (int)voos.size(); i++) {
-                cout << "Codigo: " << voos[i].codigo << " | Status: " << voos[i].getStatus() << endl;
+            if (voos.empty()) {
+                cout << "Nenhum voo cadastrado." << endl;
+            } else {
+                for (int i = 0; i < (int)voos.size(); i++) {
+                    cout << "Codigo: " << voos[i].codigo << " | Status: " << voos[i].getStatus() << endl;
+                }
+            }
+        }
+
+        else if (comando == "lm") { // LISTAR_MORTOS
+            cout << "\n--- ASTRONAUTAS MORTOS ---" << endl;
+            bool hasMortos = false;
+            for (int i = 0; i < (int)astronautas.size(); i++) {
+                if (!astronautas[i].vivo) {
+                    hasMortos = true;
+                    cout << "CPF: " << astronautas[i].cpf << " | Nome: " << astronautas[i].nome << " | Idade: " << astronautas[i].idade << endl;
+                }
+            }
+            if (!hasMortos) {
+                cout << "Nenhum astronauta morto registrado." << endl;
+            }
+        }
+
+        else if (comando == "crew") { // LISTAR_ASTRONAUTAS_CADASTRADOS
+            cout << "\n--- ASTRONAUTAS CADASTRADOS ---" << endl;
+            bool hasVivos = false;
+            for (int i = 0; i < (int)astronautas.size(); i++) {
+                if (astronautas[i].vivo) {
+                    hasVivos = true;
+                    string status = astronautas[i].disponivel ? "stand-by" : "em operacao";
+                    cout << "CPF: " << astronautas[i].cpf << " | Nome: " << astronautas[i].nome << " | Idade: " << astronautas[i].idade << " | Status: " << status << endl;
+                }
+            }
+            if (!hasVivos) {
+                cout << "Nenhum astronauta vivo cadastrado." << endl;
             }
         }
 
         else {
             cout << "[COMANDO INVALIDO] Digite !help para ver a lista de comandos." << endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
 
