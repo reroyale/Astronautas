@@ -33,22 +33,15 @@ O sistema processa comandos via terminal para realizar as seguintes operações:
 
 1. **Clonar o Repositório**:
    ```bash
-   git clone [https://github.com/reroyale/Astronautas.git](https://github.com/reroyale/Astronautas.git)
+   git clone https://github.com/reroyale/Astronautas.git C:\Users\Public\Downloads\Astronautas
+
 
 2. **Compilar o Código**:]
    ```bash
-   g++ -o Astronautas main.cpp
+   cd\
+   cd C:\Users\Public\Downloads\Astronautas
+   g++ -o astronautas.exe main.cpp
 
 3. **Executar**:]
    ```bash
-   ./Astronautas
-
-## Exemplo de Comandos
-
-- CADASTRAR_ASTRONAUTA 12345678900 35 Neil Armstrong
-- CADASTRAR_VOO 101
-- ADICIONAR_ASTRONAUTA 12345678900 101
-- LANCAR_VOO 101
-- FINALIZAR_VOO 101
-- LISTAR_VOOS
-- FIM
+   ./astronautas.exe
